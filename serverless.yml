@@ -1,0 +1,24 @@
+service: serverless-first-project
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  hello: 
+    handler: src/functions/hello.handler
+    events:
+    - http:
+        path: serverless-first-project/hello
+        method: get
+  goodbye:
+    handler: src/functions/goodbye.handler
+    events:
+      - http:
+          path: serverless-first-project/goodbye
+          method: post
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
